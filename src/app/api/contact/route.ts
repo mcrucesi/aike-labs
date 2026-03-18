@@ -1,4 +1,4 @@
-import { Resend } from "resend";
+// import { Resend } from "resend";
 import { NextResponse } from "next/server";
 
 export async function POST(request: Request) {
@@ -12,21 +12,21 @@ export async function POST(request: Request) {
       );
     }
 
-    const resend = new Resend(process.env.RESEND_API_KEY);
+    // const resend = new Resend(process.env.RESEND_API_KEY);
 
-    await resend.emails.send({
-      from: "Aike Labs <contacto@aikelabs.cl>",
-      to: process.env.CONTACT_EMAIL || "mcrucesillesca@gmail.com",
-      replyTo: email,
-      subject: `Nuevo mensaje de ${name} — aikelabs.cl`,
-      html: `
-        <h2>Nuevo mensaje desde aikelabs.cl</h2>
-        <p><strong>Nombre:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Mensaje:</strong></p>
-        <p>${message.replace(/\n/g, "<br>")}</p>
-      `,
-    });
+    // await resend.emails.send({
+    //   from: "Aike Labs <contacto@aikelabs.cl>",
+    //   to: process.env.CONTACT_EMAIL || "mcrucesillesca@gmail.com",
+    //   replyTo: email,
+    //   subject: `Nuevo mensaje de ${name} — aikelabs.cl`,
+    //   html: `
+    //     <h2>Nuevo mensaje desde aikelabs.cl</h2>
+    //     <p><strong>Nombre:</strong> ${name}</p>
+    //     <p><strong>Email:</strong> ${email}</p>
+    //     <p><strong>Mensaje:</strong></p>
+    //     <p>${message.replace(/\n/g, "<br>")}</p>
+    //   `,
+    // });
 
     return NextResponse.json({ success: true });
   } catch (error) {
